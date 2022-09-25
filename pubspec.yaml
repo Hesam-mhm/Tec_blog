@@ -64,7 +64,11 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-  
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
