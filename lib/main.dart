@@ -84,6 +84,11 @@ class Myapp extends StatelessWidget {
                 fontSize: 14,
                 color: Color.fromARGB(255, 70, 70, 70),
                 fontWeight: FontWeight.w700),
+           bodyText2: TextStyle(
+                fontFamily: 'dana',
+                fontSize: 14,
+                color: SolidColors.primeryColor,
+                fontWeight: FontWeight.w700),
             headline5: TextStyle(
                 fontFamily: 'dana',
                 fontSize: 14,

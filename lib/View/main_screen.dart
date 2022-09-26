@@ -49,7 +49,6 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               Positioned.fill(
                 child: techMainscreenPages[selectedPageIndex],
-                ),
               ),
               BottomNavigation(
                 size: size,
