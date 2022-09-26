@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
@@ -15,7 +14,7 @@ class MyCats extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Center(
           child: Column(
             children: [
@@ -41,7 +40,7 @@ class MyCats extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 32,),
+              const SizedBox(height: 32,),
               Text(MyStrings.chooseCats,style:textTheme.bodyText2,)
             ],
           ),
