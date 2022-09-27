@@ -106,7 +106,7 @@ class Myapp extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.w700),
           )),
-      home: const RegisterIntro(),
+      home: const MainScreen(),
       // home: SplashScreen(),
     );
   }

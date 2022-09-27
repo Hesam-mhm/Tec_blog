@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tec_blog/View/home_Screen.dart';
 import 'package:tec_blog/View/profile_screen.dart';
+import 'package:tec_blog/View/register_intro.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/my_colors.dart';
 
@@ -107,7 +108,12 @@ class BottomNavigation extends StatelessWidget {
                       color: Colors.white,
                     )),
                 IconButton(
-                    onPressed: () => "",
+                    onPressed: () => () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => const RegisterIntro(),
+                          ));
+                        },
                     icon: ImageIcon(
                       AssetImage(Assets.icons.writre.path),
                       color: Colors.white,
