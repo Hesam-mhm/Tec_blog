@@ -3,7 +3,7 @@ import 'package:tec_blog/View/home_Screen.dart';
 import 'package:tec_blog/View/profile_screen.dart';
 import 'package:tec_blog/View/register_intro.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/my_colors.dart';
+import 'package:tec_blog/component/my_colors.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
