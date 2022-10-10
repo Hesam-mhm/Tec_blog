@@ -1,8 +1,11 @@
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/models/fake_data.dart';
 import 'package:tec_blog/component/my_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TecDivider extends StatelessWidget {
   const TecDivider({
@@ -104,4 +107,16 @@ class SelectedMainTags extends StatelessWidget {
       ),
     );
   }
+}
+
+myUrlLauncher(String url)async{
+var uri = Uri.parse(url);
+if(await canLaunchUrl(uri)){
+  await launchUrl(uri);
+}else{
+  log("could not launch url");
+}
+
+
+
 }

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tec_blog/View/home_Screen.dart';
 import 'package:tec_blog/View/profile_screen.dart';
 import 'package:tec_blog/View/register_intro.dart';
+import 'package:tec_blog/component/my_component.dart';
+import 'package:tec_blog/component/my_strings.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/component/my_colors.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  var selectedPageIndex = 0;
+class MainScreen extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -21,43 +20,117 @@ class _MainScreenState extends State<MainScreen> {
     var textTheme = Theme.of(context).textTheme;
     var bodyMargin = size.width / 10;
 
-    List<Widget> techMainscreenPages = [
-      HomeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-      ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-    ];
-
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
+          key: _key,
+          drawer: Drawer(
             backgroundColor: SolidColors.scafoldBg,
-            title: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: Padding(
+              padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+              child: ListView(
                 children: [
-                  const Icon(Icons.menu),
-                  Image(
-                    image: AssetImage(Assets.images.logo.path),
-                    height: size.height / 13.6,
+                  DrawerHeader(
+                      child: Center(
+                    child: Image.asset(
+                      Assets.images.logo.path,
+                      scale: 3,
+                    ),
+                  )),
+                  ListTile(
+                    title: Text(
+                      "پروفایل کاربری",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {},
                   ),
-                  const Icon(Icons.search)
+                  const Divider(
+                    color: SolidColors.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "درباره تک‌بلاگ",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    color: SolidColors.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "اشتراک گذاری تک بلاگ",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () async {
+                      await Share.share(MyStrings.shareText);
+                    },
+                  ),
+                  const Divider(
+                    color: SolidColors.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "تک‌بلاگ در گیت هاب",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {
+                        myUrlLauncher(MyStrings.techBlogGithubUrl); 
+                    },
+                  ),
+                  const Divider(
+                    color: SolidColors.dividerColor,
+                  ),
                 ],
               ),
+            ),
+          ),
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            elevation: 0,
+            backgroundColor: SolidColors.scafoldBg,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                    onTap: (() {
+                      _key.currentState!.openDrawer();
+                    }),
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.black,
+                    )),
+                Image(
+                  image: AssetImage(Assets.images.logo.path),
+                  height: size.height / 13.6,
+                ),
+                const Icon(Icons.search)
+              ],
             ),
           ),
           body: Stack(
             children: [
               Positioned.fill(
-                child: techMainscreenPages[selectedPageIndex],
+                child: Obx(() {
+                return  IndexedStack(
+                  index: selectedPageIndex.value,
+                  children: [
+                    HomeScreen(
+                        size: size,
+                        textTheme: textTheme,
+                        bodyMargin: bodyMargin),
+                    ProfileScreen(
+                        size: size,
+                        textTheme: textTheme,
+                        bodyMargin: bodyMargin)
+                  ],
+                );
+                }),
               ),
               BottomNavigation(
                 size: size,
                 bodyMargin: bodyMargin,
                 changeScreen: (int value) {
-                  setState(() {
-                    selectedPageIndex = value;
-                  });
+                  selectedPageIndex.value = value;
                 },
               )
             ],
