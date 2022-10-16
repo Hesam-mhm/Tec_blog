@@ -26,22 +26,3 @@ BlogModel({
 });
 }
 
-class PodCastModel{
-  int  id;
-  String title ;
-  String imageAsset  ;
-  
-  
-  String views;  
-
-PodCastModel({
-  required this.id,
-  required this.title,
-  required this.imageAsset,
-
-  required this.views,
- 
-  
-  })
-  ;
-}

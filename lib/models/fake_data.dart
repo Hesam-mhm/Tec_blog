@@ -248,39 +248,3 @@ List<BlogModel> blogList = [
       """,
       views: "256")
 ];
-
-
-List<PodCastModel> podCastList =[
-  PodCastModel(
-    id: 1,
-   title: "رمزون" ,
-    imageAsset: Assets.images.ramzon.path,
-   
-      views: "251",
-      
-       ),
-  PodCastModel(
-    id: 2,
-   title: "رادیو کدیاد" ,
-    imageAsset: Assets.images.radio.path,
-   
-      views: "251",
-      
-       ),  PodCastModel(
-    id: 3,
-   title: "تکنوکست" ,
-    imageAsset: Assets.images.tekno.path,
-   
-      views: "251",
-      
-       ),  PodCastModel(
-    id: 4,
-   title: "پادی کست" ,
-    imageAsset: Assets.images.padi.path,
-   
-      views: "251",
-      
-       ),
-
-
-];

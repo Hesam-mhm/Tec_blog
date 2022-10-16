@@ -1,11 +1,14 @@
-
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:tec_blog/controller/home_screen_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/models/fake_data.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class TecDivider extends StatelessWidget {
   const TecDivider({
@@ -28,7 +31,7 @@ class TecDivider extends StatelessWidget {
 
 // ignore: must_be_immutable
 class MainTags extends StatelessWidget {
-   MainTags({
+  MainTags({
     Key? key,
     required this.textTheme,
     required this.index,
@@ -42,8 +45,7 @@ class MainTags extends StatelessWidget {
     return Container(
       height: 60,
       decoration: const BoxDecoration(
-          borderRadius:
-              BorderRadius.all(Radius.circular(24)),
+          borderRadius: BorderRadius.all(Radius.circular(24)),
           gradient: LinearGradient(
             colors: GradiantColors.tags,
             begin: Alignment.centerRight,
@@ -62,7 +64,7 @@ class MainTags extends StatelessWidget {
               width: 8,
             ),
             Text(
-              tagList[index].title,
+             Get.find<HomeScreenController>().tagsList[index].title!,
               style: textTheme.headline2,
             )
           ],
@@ -71,9 +73,10 @@ class MainTags extends StatelessWidget {
     );
   }
 }
+
 // ignore: must_be_immutable
 class SelectedMainTags extends StatelessWidget {
-   SelectedMainTags({
+  SelectedMainTags({
     Key? key,
     required this.textTheme,
     required this.index,
@@ -86,15 +89,12 @@ class SelectedMainTags extends StatelessWidget {
     return Container(
       height: 60,
       decoration: const BoxDecoration(
-          borderRadius:
-              BorderRadius.all(Radius.circular(24)),
-           color: SolidColors.submitArticle
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(24)),
+          color: SolidColors.submitArticle),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
         child: Row(
           children: [
-            
             const SizedBox(
               width: 8,
             ),
@@ -109,14 +109,25 @@ class SelectedMainTags extends StatelessWidget {
   }
 }
 
-myUrlLauncher(String url)async{
-var uri = Uri.parse(url);
-if(await canLaunchUrl(uri)){
-  await launchUrl(uri);
-}else{
-  log("could not launch url");
+myUrlLauncher(String url) async {
+  var uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    log("could not launch url");
+  }
 }
 
+class SpinKitLoading extends StatelessWidget {
+  const SpinKitLoading({
+    Key? key,
+  }) : super(key: key);
 
-
+  @override
+  Widget build(BuildContext context) {
+    return const SpinKitFadingCube(
+      color: SolidColors.primeryColor,
+      size: 32,
+    );
+  }
 }
