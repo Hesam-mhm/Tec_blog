@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tec_blog/View/main_screen.dart';
+import 'package:tec_blog/View/article_list_screen.dart';
+import 'package:tec_blog/View/main%20screen/main_screen.dart';
 import 'package:tec_blog/component/my_colors.dart';
 
 void main() {
@@ -105,7 +106,7 @@ class Myapp extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.w700),
           )),
-      home:  MainScreen(),
+      home:  ArticleListScreen(),
       // home: SplashScreen(),
     );
   }

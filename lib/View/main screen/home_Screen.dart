@@ -3,14 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:tec_blog/component/api_constant.dart';
+import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/component/my_strings.dart';
 import 'package:tec_blog/controller/home_screen_controller.dart';
-import '../gen/assets.gen.dart';
-import '../models/fake_data.dart';
-import '../component/my_colors.dart';
-import '../component/my_component.dart';
-import '../component/my_strings.dart';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:tec_blog/gen/assets.gen.dart';
+import 'package:tec_blog/models/fake_data.dart';
+
+import '../../component/my_component.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({

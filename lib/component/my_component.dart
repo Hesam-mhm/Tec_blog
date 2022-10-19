@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:tec_blog/component/text_Styles.dart';
 import 'package:tec_blog/controller/home_screen_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/models/fake_data.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class TecDivider extends StatelessWidget {
   const TecDivider({
@@ -131,3 +131,37 @@ class SpinKitLoading extends StatelessWidget {
     );
   }
 }
+
+  PreferredSize appBar(String title) {
+    return PreferredSize(
+ preferredSize: Size.fromHeight(80),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Center(
+                  child: Text(
+               title,
+                style: appBarTextStyle,
+              )),
+            )
+          ],
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: SolidColors.primeryColor.withAlpha(200)),
+              child: const Icon(Icons.keyboard_arrow_right_rounded,size: 32,),
+            ),
+          ),
+        ),
+      ),
+    );
+  }

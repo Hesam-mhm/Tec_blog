@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tec_blog/View/home_Screen.dart';
-import 'package:tec_blog/View/profile_screen.dart';
-import 'package:tec_blog/View/register_intro.dart';
+import 'package:tec_blog/View/main%20screen/home_Screen.dart';
+import 'package:tec_blog/View/main%20screen/profile_screen.dart';
+import 'package:tec_blog/View/main%20screen/register_intro.dart';
+
 import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/component/my_strings.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
