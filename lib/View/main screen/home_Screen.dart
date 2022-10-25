@@ -31,32 +31,32 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: Obx(
-        () => 
-        homeScreenController.loading.value== false ?
-        
-        Column(
-          children: [
-            poster(),
-            const SizedBox(
-              height: 16,
-            ),
-            tags(),
-            const SizedBox(
-              height: 32,
-            ),
-            seeMoreBlog(),
-            topVisited(),
-            seeMorePodCast(),
-            topPodCasts(),
-            const SizedBox(
-              height: 60,
+      child: Obx(() => homeScreenController.loading.value == false
+          ? Column(
+              children: [
+                poster(),
+                const SizedBox(
+                  height: 16,
+                ),
+                tags(),
+                const SizedBox(
+                  height: 32,
+                ),
+                seeMoreBlog(),
+                topVisited(),
+                seeMorePodCast(),
+                topPodCasts(),
+                const SizedBox(
+                  height: 60,
+                )
+              ],
             )
-          ],
-        ): Column(
-          
-          children:[SizedBox(height: 300,) , const SpinKitLoading()] )
-      ),
+          : Column(children: [
+              SizedBox(
+                height: 300,
+              ),
+              const SpinKitLoading()
+            ])),
     );
   }
 
@@ -77,36 +77,38 @@ class HomeScreen extends StatelessWidget {
                           height: size.height / 5.53,
                           width: size.width / 2.66,
                           child: Stack(
-                            children: [CachedNetworkImage(
-                          imageUrl: homeScreenController
-                              .topVisitedList[index].image!,
-                          imageBuilder: (context, imageProvider) => Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(16)),
-                                    image: DecorationImage(
-                                        image: imageProvider,
-                                        fit: BoxFit.cover)),
-                                foregroundDecoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(16)),
-                                  gradient: LinearGradient(
-                                      colors: GradiantColors.blogPost,
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter),
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl: homeScreenController
+                                    .topVisitedList[index].image!,
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(16)),
+                                      image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover)),
+                                  foregroundDecoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(16)),
+                                    gradient: LinearGradient(
+                                        colors: GradiantColors.blogPost,
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter),
+                                  ),
+                                ),
+                                placeholder: (context, url) =>
+                                    const SpinKitFadingCube(
+                                  color: SolidColors.primeryColor,
+                                  size: 32,
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(
+                                  Icons.image_not_supported_outlined,
+                                  color: Colors.grey,
                                 ),
                               ),
-                          placeholder: (context, url) =>
-                              const SpinKitFadingCube(
-                            color: SolidColors.primeryColor,
-                            size: 32,
-                          ),
-                          errorWidget: (context, url, error) => const Icon(
-                            Icons.image_not_supported_outlined,
-                            color: Colors.grey,
-                          ),
-                        ),
-                             
                               Positioned(
                                 left: 0,
                                 right: 0,
@@ -186,8 +188,7 @@ class HomeScreen extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(16)),
                                 image: DecorationImage(image: imageProvider)),
                           ),
-                          placeholder: (context, url) =>
-                              const SpinKitLoading(),
+                          placeholder: (context, url) => const SpinKitLoading(),
                           errorWidget: (context, url, error) => const Icon(
                             Icons.image_not_supported_outlined,
                             color: Colors.grey,
@@ -271,55 +272,47 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget poster() {
-    return 
-
-       Stack(
-        
-        children: [
-          Container(
-            height: size.height / 4.2,
-            width: size.width / 1.25,
-            foregroundDecoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                gradient: LinearGradient(
-                    colors: GradiantColors.homePosterCoverGradiant,
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter)),
-             child:  CachedNetworkImage(
-                          imageUrl: homeScreenController
-                              .poster.value.image!,
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration:BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(15)),
-                image: DecorationImage(
-                    image:imageProvider,
-                    fit: BoxFit.cover)),
-                          ),
-                          placeholder: (context, url) =>
-                              const SpinKitLoading(),
-                          errorWidget: (context, url, error) => const Icon(
-                            Icons.image_not_supported_outlined,
-                            color: Colors.grey,
-                          ),
-                        ),
+    return Stack(
+      children: [
+        Container(
+          height: size.height / 4.2,
+          width: size.width / 1.25,
+          foregroundDecoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              gradient: LinearGradient(
+                  colors: GradiantColors.homePosterCoverGradiant,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter)),
+          child: CachedNetworkImage(
+            imageUrl: homeScreenController.poster.value.image!,
+            imageBuilder: (context, imageProvider) => Container(
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+            ),
+            placeholder: (context, url) => const SpinKitLoading(),
+            errorWidget: (context, url, error) => const Icon(
+              Icons.image_not_supported_outlined,
+              color: Colors.grey,
+            ),
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 8,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: SizedBox(
-                child: Text(
-                 homeScreenController.poster.value.title!,
-                  style: textTheme.headline1,
-                ),
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 8,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: SizedBox(
+              child: Text(
+                homeScreenController.poster.value.title!,
+                style: textTheme.headline1,
               ),
             ),
-          )
-        ],
-      )
-    ;
+          ),
+        )
+      ],
+    );
   }
 }
-

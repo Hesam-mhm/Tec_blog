@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,6 +28,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/writre.png
   AssetGenImage get writre => const AssetGenImage('assets/icons/writre.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [bluepen, hashtag, home, user, writre];
 }
 
 class $AssetsImagesGen {
@@ -59,11 +62,30 @@ class $AssetsImagesGen {
   /// File path: assets/images/ramzon.png
   AssetGenImage get ramzon => const AssetGenImage('assets/images/ramzon.png');
 
+  /// File path: assets/images/single_place_holder.jpg
+  AssetGenImage get singlePlaceHolder =>
+      const AssetGenImage('assets/images/single_place_holder.jpg');
+
   /// File path: assets/images/tecbot.svg
   SvgGenImage get tecbot => const SvgGenImage('assets/images/tecbot.svg');
 
   /// File path: assets/images/tekno.png
   AssetGenImage get tekno => const AssetGenImage('assets/images/tekno.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+        homePoster,
+        imageAvatar,
+        radio,
+        bluemic,
+        flesh,
+        logo,
+        padi,
+        ramzon,
+        singlePlaceHolder,
+        tecbot,
+        tekno
+      ];
 }
 
 class Assets {
@@ -130,6 +152,8 @@ class AssetGenImage {
       cacheHeight: cacheHeight,
     );
   }
+
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 

@@ -64,7 +64,7 @@ class MainTags extends StatelessWidget {
               width: 8,
             ),
             Text(
-             Get.find<HomeScreenController>().tagsList[index].title!,
+              Get.find<HomeScreenController>().tagsList[index].title!,
               style: textTheme.headline2,
             )
           ],
@@ -132,36 +132,39 @@ class SpinKitLoading extends StatelessWidget {
   }
 }
 
-  PreferredSize appBar(String title) {
-    return PreferredSize(
- preferredSize: Size.fromHeight(80),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Center(
-                  child: Text(
-               title,
-                style: appBarTextStyle,
-              )),
-            )
-          ],
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: SolidColors.primeryColor.withAlpha(200)),
-              child: const Icon(Icons.keyboard_arrow_right_rounded,size: 32,),
+PreferredSize appBar(String title) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(80),
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+                child: Text(
+              title,
+              style: appBarTextStyle,
+            )),
+          )
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: SolidColors.primeryColor.withAlpha(200)),
+            child: const Icon(
+              Icons.keyboard_arrow_right_rounded,
+              size: 32,
             ),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}

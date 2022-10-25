@@ -1,11 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tec_blog/View/article_list_screen.dart';
-import 'package:tec_blog/View/main%20screen/main_screen.dart';
-import 'package:tec_blog/component/my_colors.dart';
+import 'package:get/get.dart';
+import 'package:tec_blog/View/Register/register_intro.dart';
 
-void main() {
+
+import 'package:tec_blog/component/my_colors.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:tec_blog/my_http_override.dart';
+
+
+
+ 
+Future<void> main() async {
+  HttpOverrides.global = MyHttpOverrides();
+
+  await GetStorage.init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: SolidColors.statusBarColor,
       statusBarIconBrightness: Brightness.dark,
@@ -19,16 +30,10 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('fa', ''),
-      ],
+     locale: const Locale('fa'),
+    
       theme: ThemeData(
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
@@ -84,7 +89,7 @@ class Myapp extends StatelessWidget {
                 fontSize: 14,
                 color: Color.fromARGB(255, 70, 70, 70),
                 fontWeight: FontWeight.w700),
-           bodyText2: TextStyle(
+            bodyText2: TextStyle(
                 fontFamily: 'dana',
                 fontSize: 14,
                 color: SolidColors.primeryColor,
@@ -106,8 +111,8 @@ class Myapp extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.w700),
           )),
-      home:  ArticleListScreen(),
-      // home: SplashScreen(),
+      home: RegisterIntro()
+      // home: ArticleListScreen()
     );
   }
 }
