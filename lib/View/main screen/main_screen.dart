@@ -3,17 +3,19 @@ import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tec_blog/View/main%20screen/home_Screen.dart';
 import 'package:tec_blog/View/main%20screen/profile_screen.dart';
-import 'package:tec_blog/View/main%20screen/register_intro.dart';
-
 import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/controller/register_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/component/my_colors.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   RxInt selectedPageIndex = 0.obs;
+
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class MainScreen extends StatelessWidget {
                       style: textTheme.headline4,
                     ),
                     onTap: () {
-                        myUrlLauncher(MyStrings.techBlogGithubUrl); 
+                      myUrlLauncher(MyStrings.techBlogGithubUrl);
                     },
                   ),
                   const Divider(
@@ -112,19 +114,19 @@ class MainScreen extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: Obx(() {
-                return  IndexedStack(
-                  index: selectedPageIndex.value,
-                  children: [
-                    HomeScreen(
-                        size: size,
-                        textTheme: textTheme,
-                        bodyMargin: bodyMargin),
-                    ProfileScreen(
-                        size: size,
-                        textTheme: textTheme,
-                        bodyMargin: bodyMargin)
-                  ],
-                );
+                  return IndexedStack(
+                    index: selectedPageIndex.value,
+                    children: [
+                      HomeScreen(
+                          size: size,
+                          textTheme: textTheme,
+                          bodyMargin: bodyMargin),
+                      ProfileScreen(
+                          size: size,
+                          textTheme: textTheme,
+                          bodyMargin: bodyMargin)
+                    ],
+                  );
                 }),
               ),
               BottomNavigation(
@@ -140,8 +142,9 @@ class MainScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation(
+  BottomNavigation(
       {Key? key,
       required this.size,
       required this.bodyMargin,
@@ -170,7 +173,7 @@ class BottomNavigation extends StatelessWidget {
           child: Container(
             height: size.height / 8,
             decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(18)),
+                borderRadius: BorderRadius.all(Radius.circular(55)),
                 gradient: LinearGradient(colors: GradiantColors.bottomNav)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -182,12 +185,9 @@ class BottomNavigation extends StatelessWidget {
                       color: Colors.white,
                     )),
                 IconButton(
-                    onPressed: () => () {
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(
-                            builder: (context) => const RegisterIntro(),
-                          ));
-                        },
+                    onPressed: () {
+                      Get.find<RegisterController>().toggleLogIn();
+                    },
                     icon: ImageIcon(
                       AssetImage(Assets.icons.writre.path),
                       color: Colors.white,

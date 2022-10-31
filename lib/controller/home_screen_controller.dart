@@ -6,19 +6,12 @@ import 'package:tec_blog/models/poster_model.dart';
 import 'package:tec_blog/models/tags_model.dart';
 import 'package:tec_blog/services/dio_service.dart';
 
-
-
 class HomeScreenController extends GetxController {
-
-
-
   Rx<PosterModel> poster = PosterModel().obs;
-  RxList<ArticleModel> topVisitedList = RxList();
-  RxList<PodCastModel> topPodcastsList = RxList();
-  RxBool loading = false.obs;
   RxList<TagsModel> tagsList = RxList();
-
-
+  RxList<ArticleModel> topVisitedList = RxList();
+  RxList<PodCastModel> topPodcasts = RxList();
+  RxBool loading = false.obs;
 
   @override
   onInit() {
@@ -26,12 +19,10 @@ class HomeScreenController extends GetxController {
     getHomeItems();
   }
 
-
-
-
   getHomeItems() async {
     loading.value = true;
-    var response = await DioService().getmethod(ApiConstant.getArticleList);
+
+    var response = await DioService().getMethod(ApiConstant.getHomeItems);
 
     if (response.statusCode == 200) {
       response.data['top_visited'].forEach((element) {
@@ -39,7 +30,7 @@ class HomeScreenController extends GetxController {
       });
 
       response.data['top_podcasts'].forEach((element) {
-        topPodcastsList.add(PodCastModel.fromJson(element));
+        topPodcasts.add(PodCastModel.fromJson(element));
       });
 
       response.data['tags'].forEach((element) {
@@ -47,7 +38,8 @@ class HomeScreenController extends GetxController {
       });
 
       poster.value = PosterModel.fromJson(response.data['poster']);
+
+      loading.value = false;
     }
-    loading.value = false;
   }
 }

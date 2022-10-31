@@ -15,7 +15,7 @@ class ListArticleController extends GetxController {
 
   getArticleList() async {
     loading.value = true;
-    var response = await DioService().getmethod(ApiConstant.getArticleList);
+    var response = await DioService().getMethod(ApiConstant.getArticleList);
 
     if (response.statusCode == 200) {
       response.data.forEach((element) {
@@ -28,7 +28,8 @@ class ListArticleController extends GetxController {
   getArticlesWithTagId(String id) async {
     articleList.clear();
     loading.value = true;
-    var response = await DioService().getmethod(ApiConstant.baseUrl +
+    // ignore: prefer_interpolation_to_compose_strings
+    var response = await DioService().getMethod(ApiConstant.baseUrl +
         "article/get.php?command=get_articles_with_cat_id&cat_id=$id&user_id=1");
 
     if (response.statusCode == 200) {

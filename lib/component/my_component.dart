@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -9,6 +8,10 @@ import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/models/fake_data.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+
+
+
 
 class TecDivider extends StatelessWidget {
   const TecDivider({
@@ -83,6 +86,7 @@ class SelectedMainTags extends StatelessWidget {
   }) : super(key: key);
 
   final TextTheme textTheme;
+  // ignore: prefer_typing_uninitialized_variables
   var index;
   @override
   Widget build(BuildContext context) {

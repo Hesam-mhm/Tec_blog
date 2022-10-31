@@ -1,18 +1,16 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tec_blog/View/Register/register_intro.dart';
-
-
+import 'package:tec_blog/View/main%20screen/main_screen.dart';
+import 'package:tec_blog/View/single.dart';
+import 'package:tec_blog/View/splash_screen.dart';
+import 'package:tec_blog/binding.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tec_blog/my_http_override.dart';
 
-
-
- 
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
 
@@ -31,10 +29,19 @@ class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-     locale: const Locale('fa'),
-    
-      theme: ThemeData(
+        
+        debugShowCheckedModeBanner: false,
+        locale: const Locale('fa'),
+        getPages: [
+          GetPage(name: routeMainScreen, page: () => MainScreen(),binding: RegisterBinding()),
+          GetPage(name: routeSingleArticle, page: () => Single(),binding: ArticleBinding()),
+        ],
+        theme: lightTheme(),
+        home: const SplashScreen());
+  }
+
+  ThemeData lightTheme() {
+    return ThemeData(
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -73,7 +80,9 @@ class Myapp extends StatelessWidget {
                 fontWeight: FontWeight.w300,
                 color: SolidColors.posterSubTitle),
             bodyText1: TextStyle(
-                fontFamily: 'dana', fontSize: 13, fontWeight: FontWeight.w300),
+                fontFamily: 'dana',
+                fontSize: 13,
+                fontWeight: FontWeight.w300),
             headline2: TextStyle(
                 fontFamily: 'dana',
                 fontSize: 14,
@@ -110,9 +119,8 @@ class Myapp extends StatelessWidget {
                 fontSize: 20,
                 color: Colors.white,
                 fontWeight: FontWeight.w700),
-          )),
-      home: RegisterIntro()
-      // home: ArticleListScreen()
-    );
+          ));
   }
 }
+String routeMainScreen = "/MainScreen" ;
+String routeSingleArticle = "/SingleArticle" ;

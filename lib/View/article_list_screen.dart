@@ -6,10 +6,10 @@ import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/controller/list_article_controller.dart';
 import 'package:tec_blog/controller/single_article_controller.dart';
 
+// ignore: must_be_immutable
 class ArticleListScreen extends StatelessWidget {
-
- String title ;
- ArticleListScreen({required this.title});
+  String title;
+  ArticleListScreen({super.key, required this.title});
 
   ListArticleController listrticleController = Get.put(ListArticleController());
   SingleArticleController singleArticleController =
@@ -27,7 +27,7 @@ class ArticleListScreen extends StatelessWidget {
             itemCount: listrticleController.articleList.length,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: ()  {
+                onTap: () {
                   singleArticleController.id.value = int.parse(
                       listrticleController.articleList[index].id.toString());
                   singleArticleController.getArticleInfo();

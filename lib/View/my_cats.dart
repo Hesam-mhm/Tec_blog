@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tec_blog/controller/home_screen_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/models/data_models.dart';
+
 import 'package:tec_blog/models/fake_data.dart';
-import 'package:tec_blog/component/my_colors.dart';
+
 import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/models/tags_model.dart';
 
 class MyCats extends StatefulWidget {
+  const MyCats({super.key});
+
   @override
   State<MyCats> createState() => _MyCatsState();
 }
 
 class _MyCatsState extends State<MyCats> {
+  HomeScreenController homeScreenController = Get.put(HomeScreenController());
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
@@ -74,13 +80,15 @@ class _MyCatsState extends State<MyCats> {
                             crossAxisCount: 2,
                             crossAxisSpacing: 5,
                             mainAxisSpacing: 5,
-                            childAspectRatio: 0.26),
+                            childAspectRatio: 0.23),
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: () {
                             setState(() {
-                              selectedTags.add(
-                                  HashTagModel(title: tagList[index].title));
+                              selectedTags.add(TagsModel(
+                                  id: homeScreenController.tagsList[index].id,
+                                  title: homeScreenController
+                                      .tagsList[index].title!));
                               tagList.remove(tagList[index]);
                             });
                           },
@@ -113,13 +121,12 @@ class _MyCatsState extends State<MyCats> {
                             crossAxisCount: 2,
                             crossAxisSpacing: 5,
                             mainAxisSpacing: 5,
-                            childAspectRatio: 0.26),
+                            childAspectRatio: 0.23),
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: () {
                             setState(() {
-                              tagList.add(HashTagModel(
-                                  title: selectedTags[index].title));
+                              tagList.add(selectedTags[index]);
                               selectedTags.remove(selectedTags[index]);
                             });
                           },
