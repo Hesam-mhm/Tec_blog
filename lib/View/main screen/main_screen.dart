@@ -9,7 +9,7 @@ import 'package:tec_blog/controller/register_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/component/my_colors.dart';
 
-final GlobalKey<ScaffoldState> _key = GlobalKey();
+GlobalKey<ScaffoldState> _key = GlobalKey();
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {

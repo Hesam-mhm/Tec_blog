@@ -1,2 +1,5 @@
-String token = 'token';
+
+class StorageKey {
+  String token = 'token';
 String userId = 'userId';
+}

@@ -3,16 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:tec_blog/View/article_list_screen.dart';
-import 'package:tec_blog/View/single.dart';
+import 'package:tec_blog/View/article/article_list_screen.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:tec_blog/component/my_strings.dart';
 import 'package:tec_blog/controller/home_screen_controller.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:tec_blog/controller/list_article_controller.dart';
-import 'package:tec_blog/controller/single_article_controller.dart';
+import 'package:tec_blog/controller/article/list_article_controller.dart';
+import 'package:tec_blog/controller/article/single_article_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
+import 'package:tec_blog/main.dart';
 import 'package:tec_blog/models/fake_data.dart';
 
 import '../../component/my_component.dart';
@@ -31,8 +31,10 @@ class HomeScreen extends StatelessWidget {
   final double bodyMargin;
 
   HomeScreenController homeScreenController = Get.put(HomeScreenController());
-  SingleArticleController singleArticleController = Get.put(SingleArticleController());
-  ListArticleController listArticleController = Get.put(ListArticleController());
+  SingleArticleController singleArticleController =
+      Get.put(SingleArticleController());
+  ListArticleController listArticleController =
+      Get.put(ListArticleController());
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +80,11 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.only(right: index == 0 ? bodyMargin : 8),
                 child: GestureDetector(
                   onTap: () {
-                    singleArticleController.id.value = int.parse(homeScreenController.topVisitedList[index].id.toString()) ;
+                    singleArticleController.id.value = int.parse(
+                        homeScreenController.topVisitedList[index].id
+                            .toString());
                     singleArticleController.getArticleInfo();
-                    Get.to(Single());
+                    Get.toNamed(NamedRoute.routeSingleArticle);
                   },
                   child: Column(
                     children: [
@@ -195,8 +199,8 @@ class HomeScreen extends StatelessWidget {
                         height: size.height / 5.53,
                         width: size.width / 2.66,
                         child: CachedNetworkImage(
-                          imageUrl: homeScreenController
-                              .topPodcasts[index].poster!,
+                          imageUrl:
+                              homeScreenController.topPodcasts[index].poster!,
                           imageBuilder: (context, imageProvider) => Container(
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -254,12 +258,15 @@ class HomeScreen extends StatelessWidget {
       padding: EdgeInsets.only(right: bodyMargin, bottom: 16),
       child: Row(
         children: [
-          ImageIcon(AssetImage(Assets.icons.bluepen.path),color: SolidColors.seeMore ,),
+          ImageIcon(
+            AssetImage(Assets.icons.bluepen.path),
+            color: SolidColors.seeMore,
+          ),
           const SizedBox(
             width: 8,
           ),
           InkWell(
-               onTap: () => Get.to(ArticleListScreen(title: "مقاله های جدید")),
+            onTap: () => Get.to(ArticleListScreen(title: "مقاله های جدید")),
             child: Text(
               MyStrings.viewHotestBlog,
               style: textTheme.headline3,
@@ -285,8 +292,7 @@ class HomeScreen extends StatelessWidget {
                   var tagName = homeScreenController.tagsList[index].title!;
                   var id = homeScreenController.tagsList[index].id.toString();
                   listArticleController.getArticlesWithTagId(id);
-                  Get.to(ArticleListScreen(title: tagName ));
-
+                  Get.to(ArticleListScreen(title: tagName));
                 },
                 child: MainTags(
                   textTheme: textTheme,

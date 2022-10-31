@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:tec_blog/View/article_list_screen.dart';
+import 'package:tec_blog/View/article/article_list_screen.dart';
 
 import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/component/my_strings.dart';
-import 'package:tec_blog/controller/list_article_controller.dart';
-import 'package:tec_blog/controller/single_article_controller.dart';
+import 'package:tec_blog/controller/article/list_article_controller.dart';
+import 'package:tec_blog/controller/article/single_article_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import '../component/my_component.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 // ignore: must_be_immutable

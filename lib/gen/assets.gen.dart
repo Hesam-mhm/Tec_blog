@@ -23,14 +23,23 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
 
+  /// File path: assets/icons/make_podcast_icon.png
+  AssetGenImage get makePodcastIcon =>
+      const AssetGenImage('assets/icons/make_podcast_icon.png');
+
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
+
+  /// File path: assets/icons/write_article_icon.png
+  AssetGenImage get writeArticleIcon =>
+      const AssetGenImage('assets/icons/write_article_icon.png');
 
   /// File path: assets/icons/writre.png
   AssetGenImage get writre => const AssetGenImage('assets/icons/writre.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [bluepen, hashtag, home, user, writre];
+  List<AssetGenImage> get values =>
+      [bluepen, hashtag, home, makePodcastIcon, user, writeArticleIcon, writre];
 }
 
 class $AssetsImagesGen {
@@ -69,6 +78,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/tecbot.svg
   SvgGenImage get tecbot => const SvgGenImage('assets/images/tecbot.svg');
 
+  /// File path: assets/images/tecbot_empty.png
+  AssetGenImage get tecbotEmpty =>
+      const AssetGenImage('assets/images/tecbot_empty.png');
+
   /// File path: assets/images/tekno.png
   AssetGenImage get tekno => const AssetGenImage('assets/images/tekno.png');
 
@@ -84,6 +97,7 @@ class $AssetsImagesGen {
         ramzon,
         singlePlaceHolder,
         tecbot,
+        tecbotEmpty,
         tekno
       ];
 }

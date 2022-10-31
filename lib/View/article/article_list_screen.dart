@@ -1,19 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tec_blog/View/single.dart';
 import 'package:tec_blog/component/my_component.dart';
-import 'package:tec_blog/controller/list_article_controller.dart';
-import 'package:tec_blog/controller/single_article_controller.dart';
+import 'package:tec_blog/controller/article/list_article_controller.dart';
+import 'package:tec_blog/controller/article/single_article_controller.dart';
+import 'package:tec_blog/main.dart';
 
 // ignore: must_be_immutable
 class ArticleListScreen extends StatelessWidget {
   String title;
   ArticleListScreen({super.key, required this.title});
 
-  ListArticleController listrticleController = Get.put(ListArticleController());
-  SingleArticleController singleArticleController =
-      Get.put(SingleArticleController());
+  var listrticleController = Get.find<ListArticleController>();
+  var singleArticleController = Get.find<SingleArticleController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ class ArticleListScreen extends StatelessWidget {
                   singleArticleController.id.value = int.parse(
                       listrticleController.articleList[index].id.toString());
                   singleArticleController.getArticleInfo();
-                  Get.to(() => Single());
+                  Get.toNamed(NamedRoute.routeSingleArticle);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
