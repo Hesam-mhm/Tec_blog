@@ -7,7 +7,7 @@ import 'package:tec_blog/controller/article/manage_article_controller.dart';
 import 'package:tec_blog/controller/article/single_article_controller.dart';
 import 'package:tec_blog/main.dart';
 import 'package:validators/validators.dart';
-import '../../component/my_strings.dart';
+import '../../constant/my_strings.dart';
 import '../../controller/register_controller.dart';
 import '../../gen/assets.gen.dart';
 

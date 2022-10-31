@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tec_blog/View/article/article_list_screen.dart';
-import 'package:tec_blog/component/my_colors.dart';
-import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/constant/my_colors.dart';
+import 'package:tec_blog/constant/my_strings.dart';
 import 'package:tec_blog/controller/home_screen_controller.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 32,
                 ),
-                seeMoreBlog(),
+                SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme, title: MyStrings.viewHotestBlog),
                 topVisited(),
                 seeMorePodCast(),
                 topPodCasts(),
@@ -247,30 +247,6 @@ class HomeScreen extends StatelessWidget {
           Text(
             MyStrings.viewHotestPodCasts,
             style: textTheme.headline3,
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget seeMoreBlog() {
-    return Padding(
-      padding: EdgeInsets.only(right: bodyMargin, bottom: 16),
-      child: Row(
-        children: [
-          ImageIcon(
-            AssetImage(Assets.icons.bluepen.path),
-            color: SolidColors.seeMore,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          InkWell(
-            onTap: () => Get.to(ArticleListScreen(title: "مقاله های جدید")),
-            child: Text(
-              MyStrings.viewHotestBlog,
-              style: textTheme.headline3,
-            ),
           )
         ],
       ),

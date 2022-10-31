@@ -7,7 +7,7 @@ import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/models/fake_data.dart';
 
 import 'package:tec_blog/component/my_component.dart';
-import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/constant/my_strings.dart';
 import 'package:tec_blog/models/tags_model.dart';
 
 class MyCats extends StatefulWidget {

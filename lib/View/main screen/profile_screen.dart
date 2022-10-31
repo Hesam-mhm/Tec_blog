@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/constant/my_colors.dart';
 import 'package:tec_blog/component/my_component.dart';
-import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/constant/my_strings.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 
 

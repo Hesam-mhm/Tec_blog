@@ -6,7 +6,7 @@ import 'package:tec_blog/component/text_Styles.dart';
 import 'package:tec_blog/controller/home_screen_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/models/fake_data.dart';
-import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/constant/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -174,4 +174,39 @@ PreferredSize appBar(String title) {
       ),
     ),
   );
+}
+
+class SeeMoreBlog extends StatelessWidget {
+  const SeeMoreBlog({
+    Key? key,
+    required this.bodyMargin,
+    required this.textTheme,
+    required this.title
+  }) : super(key: key);
+
+  final double bodyMargin;
+  final TextTheme textTheme;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: bodyMargin, bottom: 8),
+      child: Row(
+        children: [
+          ImageIcon(
+            Image.asset(Assets.icons.bluepen.path).image,
+            color: SolidColors.seeMore,
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Text(
+            title,
+            style: textTheme.headline3,
+          )
+        ],
+      ),
+    );
+  }
 }

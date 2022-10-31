@@ -4,10 +4,12 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tec_blog/View/main%20screen/home_Screen.dart';
 import 'package:tec_blog/View/main%20screen/profile_screen.dart';
 import 'package:tec_blog/component/my_component.dart';
-import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/constant/my_strings.dart';
 import 'package:tec_blog/controller/register_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/constant/my_colors.dart';
+
+import '../../component/dimens.dart';
 
 GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -21,7 +23,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
-    var bodyMargin = size.width / 10;
+   
 
     return SafeArea(
       child: Scaffold(
@@ -29,7 +31,7 @@ class MainScreen extends StatelessWidget {
           drawer: Drawer(
             backgroundColor: SolidColors.scafoldBg,
             child: Padding(
-              padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+              padding: EdgeInsets.only(right: Dimens.bodyMargin, left: Dimens.bodyMargin),
               child: ListView(
                 children: [
                   DrawerHeader(
@@ -120,18 +122,18 @@ class MainScreen extends StatelessWidget {
                       HomeScreen(
                           size: size,
                           textTheme: textTheme,
-                          bodyMargin: bodyMargin),
+                          bodyMargin: Dimens.bodyMargin),
                       ProfileScreen(
                           size: size,
                           textTheme: textTheme,
-                          bodyMargin: bodyMargin)
+                          bodyMargin: Dimens.bodyMargin)
                     ],
                   );
                 }),
               ),
               BottomNavigation(
                 size: size,
-                bodyMargin: bodyMargin,
+                bodyMargin: Dimens.bodyMargin,
                 changeScreen: (int value) {
                   selectedPageIndex.value = value;
                 },

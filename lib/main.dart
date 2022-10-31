@@ -7,7 +7,7 @@ import 'package:tec_blog/View/main%20screen/main_screen.dart';
 import 'package:tec_blog/View/article/single.dart';
 import 'package:tec_blog/View/splash_screen.dart';
 import 'package:tec_blog/binding.dart';
-import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/constant/my_colors.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tec_blog/my_http_override.dart';
 import 'View/article/single_manage_article.dart';

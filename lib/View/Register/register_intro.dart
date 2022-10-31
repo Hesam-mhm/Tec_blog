@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:tec_blog/View/main%20screen/main_screen.dart';
 import 'package:tec_blog/main.dart';
 import 'package:validators/validators.dart';
-import '../../component/my_strings.dart';
+import '../../constant/my_strings.dart';
 import '../../controller/register_controller.dart';
 import '../../gen/assets.gen.dart';
 

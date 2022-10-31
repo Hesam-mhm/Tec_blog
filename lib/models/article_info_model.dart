@@ -1,4 +1,4 @@
-import 'package:tec_blog/component/api_constant.dart';
+import 'package:tec_blog/constant/api_constant.dart';
 
 class ArticleInfoModel {
   String? id;
@@ -13,19 +13,12 @@ class ArticleInfoModel {
   String? createdAt;
   bool? isFavorite;
 
-  ArticleInfoModel({
-    this.id,
+  ArticleInfoModel(
     this.title,
     this.content,
     this.image,
-    this.catId,
-    this.catName,
-    this.author,
-    this.view,
-    this.status,
-    this.createdAt,
-    this.isFavorite,
-  });
+
+  );
 
   ArticleInfoModel.fromJson(Map<String, dynamic> element) {
     id = element["info"]["id"];

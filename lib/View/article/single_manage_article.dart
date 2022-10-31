@@ -2,14 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:tec_blog/View/article/article_list_screen.dart';
 
-import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/constant/my_colors.dart';
 import 'package:tec_blog/component/my_component.dart';
-import 'package:tec_blog/component/my_strings.dart';
-import 'package:tec_blog/controller/article/list_article_controller.dart';
 import 'package:tec_blog/controller/article/manage_article_controller.dart';
-import 'package:tec_blog/controller/article/single_article_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
@@ -61,27 +57,41 @@ class SingleManageArticle extends StatelessWidget {
                                 size: 24,
                               ),
                               Expanded(child: SizedBox()),
-                              Icon(
-                                Icons.bookmark_border_outlined,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Icon(
-                                Icons.share,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
+                             
                             ],
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Center(
+                            child: Container(
+                             
+                              height: 30,
+                              width: Get.width/3,
+                              decoration: const BoxDecoration(color: SolidColors.primeryColor,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                topRight: Radius.circular(16),
+                                )
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("انتخاب تصویر",style: textTheme.headline2,),
+                                  const Icon(Icons.add,color: Colors.white,)
+                                ],
+                              ),
+                            ),
                           ),
                         )
                       ],
                     ),
+
+                   SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme, title: "ویرایش عنوان مقاله"),
+
+
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
@@ -103,19 +113,11 @@ class SingleManageArticle extends StatelessWidget {
                           const SizedBox(
                             width: 16,
                           ),
-                          Text(
-                            manageArticleController
-                                .articleInfoModel.value.author!,
-                            style: textTheme.headlineMedium,
-                          ),
+                       
                           const SizedBox(
                             width: 16,
                           ),
-                          Text(
-                            manageArticleController
-                                .articleInfoModel.value.createdAt!,
-                            style: textTheme.caption,
-                          )
+                        
                         ],
                       ),
                     ),
@@ -168,8 +170,7 @@ class SingleManageArticle extends StatelessWidget {
                             width: 8,
                           ),
                           Text(
-                            manageArticleController.tagsList[index].title!,
-                            style: textTheme.headline4,
+                          ""
                           )
                         ],
                       ),
